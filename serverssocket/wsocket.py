@@ -28,7 +28,7 @@ async def ws_ep(websocket: WebSocket):
 
     try:
         while True:
-            data = await websocket.receive_json()
+            data = await websocket.receive_text()
             if websocket in manager.conn_list:
                 peer_ws = manager.conn_list[websocket]
                 await manager.send_message(data, peer_ws)
